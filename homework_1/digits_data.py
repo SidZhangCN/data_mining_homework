@@ -2,7 +2,6 @@ print(__doc__)
 
 from time import time
 import numpy as np
-
 from sklearn import metrics
 from sklearn.cluster import KMeans
 from sklearn.cluster import AffinityPropagation
