@@ -68,44 +68,44 @@ def bench_clustring(estimator, name, data):
 if __name__ == '__main__':
     print(82 * '_')
     print('init\t\t\t\t\t\t\ttime\thomo\tcompl\tNMI')
-    # bench_clustring(KMeans(n_clusters=true_k, init='k-means++', max_iter=100,
-    #                        n_init=1, verbose=0),
-    #                 name="k-means++", data=X)
-    #
-    # bench_clustring(AffinityPropagation(),
-    #                 name="Affinity propagation", data=X)
+    bench_clustring(KMeans(n_clusters=true_k, init='k-means++', max_iter=100,
+                           n_init=1, verbose=0),
+                    name="k-means++", data=X)
+    
+    bench_clustring(AffinityPropagation(),
+                    name="Affinity propagation", data=X)
 
     # wait to modify the args
     bandwidth = estimate_bandwidth(X, quantile=0.2, n_samples=500)
     bench_clustring(MeanShift(bandwidth=bandwidth, bin_seeding=True, cluster_all=True,
                               n_jobs=None, seeds=None), name="Mean-shift", data=X)
-    #
-    # bench_clustring(SpectralClustering(affinity="nearest_neighbors"),
-    #                 name="Spectral Clustering", data=X)
-    #
-    # bench_clustring(AgglomerativeClustering(affinity='euclidean', compute_full_tree='auto',
-    #                                         connectivity=None, distance_threshold=None,
-    #                                         linkage='ward', memory=None, n_clusters=100,
-    #                                         pooling_func='deprecated'),
-    #                 name="Ward Hierarchical Clustering", data=X)
-    #
-    # bench_clustring(AgglomerativeClustering(affinity='euclidean', compute_full_tree='auto',
-    #                                         connectivity=None, distance_threshold=None,
-    #                                         linkage='single', memory=None, n_clusters=512,
-    #                                         pooling_func='deprecated'),
-    #                 name="Agglomerative clustering", data=X)
-    #
-    # bench_clustring(DBSCAN(eps=0.005, min_samples=2),
-    #                 name="DBSCAN", data=X)
-    #
-    # gm = GaussianMixture(n_components=50)
-    # labels = gm.fit(X).predict(X)
-    # t0 = time()
-    # print('%-30s\t%.2fs\t%.3f\t%.3f\t%.3f\t'
-    #       % ("Gaussian mixture", (time() - t0),
-    #          metrics.homogeneity_score(labels_true, labels),
-    #          metrics.completeness_score(labels_true, labels),
-    #          metrics.normalized_mutual_info_score(labels_true, labels,
-    #                                               average_method='arithmetic')))
+    
+    bench_clustring(SpectralClustering(affinity="nearest_neighbors"),
+                    name="Spectral Clustering", data=X)
+    
+    bench_clustring(AgglomerativeClustering(affinity='euclidean', compute_full_tree='auto',
+                                            connectivity=None, distance_threshold=None,
+                                            linkage='ward', memory=None, n_clusters=100,
+                                            pooling_func='deprecated'),
+                    name="Ward Hierarchical Clustering", data=X)
+    
+    bench_clustring(AgglomerativeClustering(affinity='euclidean', compute_full_tree='auto',
+                                            connectivity=None, distance_threshold=None,
+                                            linkage='single', memory=None, n_clusters=512,
+                                            pooling_func='deprecated'),
+                    name="Agglomerative clustering", data=X)
+    
+    bench_clustring(DBSCAN(eps=0.005, min_samples=2),
+                    name="DBSCAN", data=X)
+    
+    gm = GaussianMixture(n_components=50)
+    labels = gm.fit(X).predict(X)
+    t0 = time()
+    print('%-30s\t%.2fs\t%.3f\t%.3f\t%.3f\t'
+          % ("Gaussian mixture", (time() - t0),
+             metrics.homogeneity_score(labels_true, labels),
+             metrics.completeness_score(labels_true, labels),
+             metrics.normalized_mutual_info_score(labels_true, labels,
+                                                  average_method='arithmetic')))
 
     print(82 * '_')
