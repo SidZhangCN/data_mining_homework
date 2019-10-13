@@ -7,8 +7,9 @@
 ### 实验要求
 使用python + sklearn在load_digits和fetch_20newsgroups两个数据集上的聚类效果。
 使用的聚类算法如下：
+
 | Method name | Parameters | Scalability | Usecase | Geometry (metric used) |
-| ----- | ---- | ---- | ---- | ---- |
+| :- | :-: | :-: | :-: | :-  |
 | K-Means | number of clusters | Very large n_samples, medium n_clusters with MiniBatch code | General-purpose, even cluster size, flat geometry, not too many clusters | Distances between points |
 | Affinity propagation | damping, sample preference | Not scalable with n_samples | Many clusters, uneven cluster size, non-flat geometry | Graph distance (e.g. nearest-neighbor graph) |
 | Mean-shift | 	bandwidth | Not scalable with n_samples | Many clusters, uneven cluster size, non-flat geometry | Distances between points |
@@ -51,6 +52,7 @@
 
 ### 实验结果
 8种聚类方法在digital_loads数据集下的评估结果如下表：
+
 |init	|						time|	homo|	compl|	NMI|
 | ----- | ----                      | ----  | ----  | ---- |
 |k-means++|                   	0.25s|	0.602|	0.650|	0.625|	
@@ -63,6 +65,7 @@
 |Gaussian mixture|              0.00s|	0.862|	0.541|	0.665|
 
 8种聚类方法在fetch_20newsgroups数据集下的评估结果如下表：
+
 |init	|						time|	homo|	compl|	NMI|
 | ----- | ----                      | ----  | ----  | ---- |
 |k-means++|                   	0.05s|	0.363|	0.442|	0.398|	
